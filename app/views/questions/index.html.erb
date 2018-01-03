@@ -1,24 +1,28 @@
 <div class="container">
   <div class="row">
-    <h1>Preguntas</h1>
-    <p id="notice"><%= notice %></p>
-    <div class="col-sm-1">
-      <div class="questions-votes">
-        <h5>votos</h5>
-      </div>
-    </div>
-    <div class="col-sm-1">
-      <div class="questions-answers">
-        <h5>respuestas</h5>
-      </div>
-    </div>
-    <div class="col-sm-10">
+    <div class="col-sm-12">
+      <h1>Preguntas</h1>
+      <p id="notice"><%= notice %></p>
       <% @questions.each do |question| %>
-      <div class="questions-container">
-        <h3 class="question-title"> <%= link_to question.title, question_path(question) %> </h3>
-        <p class="question-body"> <%= question.body %> </p>
-      <% end %>
+      <div class="questions-section">
+        <div class="col-sm-1">
+          <div class="questions-votes">
+            <h5>votos</h5>
+          </div>
+        </div>
+        <div class="col-sm-1">
+          <div class="questions-answers">
+            <h5>respuestas</h5>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <div class="question-container">
+            <h3 class="question-title"> <%= link_to question.title, question_path(question) %> </h3>
+            <p class="question-body"> <%= question.body %> </p>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
