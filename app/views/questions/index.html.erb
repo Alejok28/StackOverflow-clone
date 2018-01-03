@@ -1,14 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <h1>Preguntas</h1>
+    <p id="notice"><%= notice %></p>
+    <div class="col-sm-1">
+      <div class="questions-votes">
+        <h5>votos</h5>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <div class="questions-answers">
+        <h5>respuestas</h5>
+      </div>
+    </div>
+    <div class="col-sm-10">
+      <% @questions.each do |question| %>
       <div class="questions-container">
-        <p id="notice"><%= notice %></p>
-
-        <h1>Preguntas</h1>
-        <% @questions.each do |question| %>
-          <h3 class="question-title"> <%= link_to question.title, question_path(question) %> </h3>
-          <p class="question-body"> <%= question.body %> </p>
-        <% end %>
+        <h3 class="question-title"> <%= link_to question.title, question_path(question) %> </h3>
+        <p class="question-body"> <%= question.body %> </p>
+      <% end %>
       </div>
     </div>
   </div>

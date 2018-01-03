@@ -1,11 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-11 col-sm-offset-1">
       <div class="question-container">
         <p id="notice"><%= notice %></p>
-        <h3><%= @question.title %></h3>
+        <h2><%= @question.title %></h2>
         <p><%= @question.body %></p>
       </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="col-sm-1 ">
+        <h3>votos</h3>
+      </div>
+      <div class="col-sm-11 ">
+        <div class="answers-container">
+          <h3><%= @question.answers.count %> respuesta(s)</h3>
+          <% @question.answers.each do |answer| %>
+          <div class="answer-body"> <%= answer.body %></div>
+          <div class="answer-published_by">-publicado por <%= answer.user.email %> hace <%= time_ago_in_words(answer.created_at) %> </div>
+          <% end %>
+
+          <%= form_for [@question, @question.answers.build] do |form| %>
+            <div class="form-group">
+              <%=  %>
+              <%= form.text_area :body, id: :question_body, placeholder:"Agregar Respuesta" ,class: "form-control" %>
+            </div>
+            <div class="actions">
+              <%= form.submit "Responder", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
