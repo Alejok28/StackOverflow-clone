@@ -6,11 +6,31 @@
         <h2><%= @question.title %></h2>
         <p><%= @question.body %></p>
       </div>
+      <div class="col-sm-11 col-sm-offset-1">
+        <% @question.comments.each do |comment| %>
+        <div class="col-sm-11">
+          <div class="comment-body"> <%= comment.body %></div>
+          <div class="comment-published_by"> - publicado por <%= comment.user.email %> hace <%= time_ago_in_words(comment.created_at) %> </div>
+        </div>
+        <% end %>
+      </div><br>
+      <div class="col-sm-11 col-sm-offset-1">
+        <%= form_for [@question, @question.comments.build] do |form| %>
+        <div class="form-group">
+          <%=  %>
+          <%= form.text_area :body, placeholder:"Agregar comentario" ,class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Comentar", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-sm-11 col-sm-offset-1">
-      <h3><%= @question.answers.count %> respuesta(s)</h3>
+      <h3 class="answers-count"><%= @question.answers.count %> respuesta(s)</h3>
       <% @question.answers.each do |answer| %>
       <div class="col-sm-1">
         <h4>votos</h4>
@@ -19,18 +39,40 @@
         <div class="answer-body"> <%= answer.body %></div>
         <div class="answer-published_by"> - publicado por <%= answer.user.email %> hace <%= time_ago_in_words(answer.created_at) %> </div>
       </div>
+      <div class="comments-container col-sm-11 col-sm-offset-1">
+        <% answer.comments.each do |comment| %>
+        <div class="col-sm-11">
+          <div class="comment-body"> <%= comment.body %></div>
+          <div class="comment-published_by"> - publicado por <%= comment.user.email %> hace <%= time_ago_in_words(comment.created_at) %> </div>
+        </div>
+        <% end %>
+      </div><br>
+      <div class="col-sm-11 col-sm-offset-1">
+        <%= form_for [answer, answer.comments.build] do |form| %>
+        <div class="form-group">
+          <%=  %>
+          <%= form.text_area :body, placeholder:"Agregar comentario" ,class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Comentar", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <div class="col-sm-10 col-sm-offset-2">
-      <%= form_for [@question, @question.answers.build] do |form| %>
-      <div class="form-group">
-        <%=  %>
-        <%= form.text_area :body, id: :question_body, placeholder:"Agregar Respuesta" ,class: "form-control" %>
+    <div class="row">
+      <div class="col-sm-11 col-sm-offset-1">
+        <h3>Tu respuesta</h3>
+        <%= form_for [@question, @question.answers.build] do |form| %>
+        <div class="form-group">
+          <%=  %>
+          <%= form.text_area :body, id: :question_body, placeholder:"Agregar Respuesta" ,class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Responder", class: "btn btn-primary" %>
+        </div>
+        <% end %>
       </div>
-      <div class="actions">
-        <%= form.submit "Responder", class: "btn btn-primary" %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>
