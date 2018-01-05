@@ -11,15 +11,19 @@
   <body>
 
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
+      <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <a class="navbar-brand" href="/">OverflowStack</a>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <%= form_tag questions_path, method: :get, class:"navbar-form navbar-left" do %>
+              <div class="form-group">
+                <%= text_field_tag :title, params[:title], class: "form-control", placeholder: "Buscar" %>
+              </div>
+            <% end %>
             <% if user_signed_in? %>
               <li><%=link_to "Nueva pregunta", new_question_path%></li>
               <li class="dropdown">
