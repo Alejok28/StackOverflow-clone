@@ -30,15 +30,7 @@
         <% end %>
       </div><br>
       <div class="col-sm-11 col-sm-offset-1">
-        <%= form_for [@question, @question.comments.build] do |form| %>
-        <div class="form-group">
-          <%=  %>
-          <%= form.text_area :body, placeholder:"Agregar comentario" ,class: "form-control" %>
-        </div>
-        <div class="actions">
-          <%= form.submit "Comentar", class: "btn btn-primary" %>
-        </div>
-        <% end %>
+        <%= render partial: "comments/comments", locals: {commentable: @question} %>
       </div>
     </div>
   </div>
@@ -73,15 +65,7 @@
         <% end %>
       </div><br>
       <div class="col-sm-11 col-sm-offset-1">
-        <%= form_for [answer, answer.comments.build] do |form| %>
-        <div class="form-group">
-          <%=  %>
-          <%= form.text_area :body, placeholder:"Agregar comentario" ,class: "form-control" %>
-        </div>
-        <div class="actions">
-          <%= form.submit "Comentar", class: "btn btn-primary" %>
-        </div>
-        <% end %>
+        <%= render partial: "comments/comments", locals: {commentable: answer} %>
       </div>
       <% end %>
     </div>
@@ -90,7 +74,6 @@
         <h3>Tu respuesta</h3>
         <%= form_for [@question, @question.answers.build] do |form| %>
         <div class="form-group">
-          <%=  %>
           <%= form.text_area :body, id: :question_body, placeholder:"Agregar Respuesta" ,class: "form-control" %>
         </div>
         <div class="actions">
