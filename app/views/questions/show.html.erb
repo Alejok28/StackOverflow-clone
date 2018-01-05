@@ -3,8 +3,23 @@
     <div class="col-sm-11 col-sm-offset-1">
       <div class="question-container">
         <p id="notice"><%= notice %></p>
-        <h2><%= @question.title %></h2>
-        <p><%= @question.body %></p>
+        <div class="vote-question col-sm-1">
+          <% if @question.voted_by? current_user %>
+            <%= link_to question_votes_path(@question), method: :delete do %>
+              <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><br>
+              <span><%= @question.votes.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to question_votes_path(@question), method: :post do %>
+              <span class="glyphicon glyphicon-menu-up"></span><br>
+              <span><%= @question.votes.count %></span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="question col-sm-11">
+          <h2><%= @question.title %></h2>
+          <p><%= @question.body %></p>
+        </div>
       </div>
       <div class="col-sm-11 col-sm-offset-1">
         <% @question.comments.each do |comment| %>
@@ -33,7 +48,17 @@
       <h3 class="answers-count"><%= @question.answers.count %> respuesta(s)</h3>
       <% @question.answers.each do |answer| %>
       <div class="col-sm-1">
-        <h4>votos</h4>
+        <% if answer.voted_by? current_user %>
+          <%= link_to answer_votes_path(answer), method: :delete do %>
+            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><br>
+            <span><%= answer.votes.count %></span>
+          <% end %>
+        <% else %>
+          <%= link_to answer_votes_path(answer), method: :post do %>
+            <span class="glyphicon glyphicon-menu-up"></span><br>
+            <span><%= answer.votes.count %></span>
+          <% end %>
+        <% end %>
       </div>
       <div class="col-sm-11">
         <div class="answer-body"> <%= answer.body %></div>

@@ -1,25 +1,26 @@
+<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h1>Preguntas</h1>
-      <p id="notice"><%= notice %></p>
       <% @questions.each do |question| %>
       <div class="questions-section">
         <div class="col-sm-1">
           <div class="questions-votes">
-            <h5>votos</h5>
+            <h3 class="questions-votes-counter"> <%=question.votes.count %></h3>
+            <h5 class="questions-votes-title">votos</h5>
           </div>
         </div>
         <div class="col-sm-1">
           <div class="questions-answers">
-            <h5>respuestas</h5>
-            <h3> <%=question.answers.count %></h3>
+            <h3 class="questions-answers-counter"> <%=question.answers.count %></h3>
+            <h5 class="questions-answers-title">respuestas</h5>
           </div>
         </div>
         <div class="col-sm-10">
           <div class="question-container">
             <h3 class="question-title"> <%= link_to question.title, question_path(question) %> </h3>
-            <p class="question-body"> <%= question.body %> </p>
+            <p class="question-by"> Preguntó <%= question.user.email %> hace <%= time_ago_in_words(question.created_at) %></p>
           </div>
         </div>
       </div>

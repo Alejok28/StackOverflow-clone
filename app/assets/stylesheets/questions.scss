@@ -1,10 +1,38 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$published-by-color: rgb(164, 167, 163);
 body{
 background-color: rgb(246, 245, 239);
 }
-.question-container, .answers-count{
+.question, .answers-count{
   padding: 5px;
   border-bottom: 1px solid rgb(198, 198, 198);
+}
+
+.questions-section{
+  border-top: 1px solid rgb(205, 205, 205);
+  .questions-votes{
+    text-align: center;
+    .questions-votes-title{
+      color: $published-by-color;
+    }
+  }
+  .questions-answers{
+    text-align: center;
+    .questions-answers-title{
+      color: $published-by-color;
+    }
+  }
+  .question-container{
+    .question-title{
+      a{
+        color:rgb(250, 163, 47);
+      }
+    }
+    .question-by{
+      color: $published-by-color;
+    }
+  }
+
 }
