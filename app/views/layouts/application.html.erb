@@ -30,7 +30,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><%=link_to "Editar Perfil", edit_user_registration_path%></li>
-                  <li><%=link_to "Salir", destroy_user_session_path, method: :delete, data: { confirm: "¿Estás seguro que desea salir?" }%></li>
+                  <li><%=link_to "Salir", destroy_user_session_path, method: :delete, data: { confirm: "¿Estás seguro que deseas salir?" }%></li>
                 </ul>
               </li>
 
@@ -43,6 +43,19 @@
       </div><!-- /.container-fluid -->
     </nav>
 
+    <%if notice %>
+      <div class="notice alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <%if alert %>
+      <div class="notice alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
 
     <%= yield %>
   </body>

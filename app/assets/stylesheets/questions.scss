@@ -36,5 +36,51 @@ body{
       color: $published-by-color;
     }
   }
+}
 
+// SHOW
+.question-container{
+  .vote-question{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+.comments-question{
+  .comment-published_by{
+    color: $published-by-color;
+    padding: 5px;
+  }
+  .comment{
+    border-bottom: 1px solid rgb(205, 205, 205);
+  }
+}
+.comment-question-form{
+  padding: 10px;
+}
+.answers-question{
+  .answer-votes{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 15px;
+  }
+  .answer-question{
+    border-bottom: 1px solid rgb(205, 205, 205);
+    padding: 5px;
+    .answer-published_by{
+      color: $published-by-color;
+    }
+  }
+  .comments-container{
+    .comment{
+      padding: 5px;
+      border-bottom: 1px solid rgb(205, 205, 205);
+      .comment-published_by{
+        color: $published-by-color;
+      }
+    }
+  }
+  .comment-answer-form{
+    padding: 10px;
+  }
 }

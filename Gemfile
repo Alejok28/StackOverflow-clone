@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'devise'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
+gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
