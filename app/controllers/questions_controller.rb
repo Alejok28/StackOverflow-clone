@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!,  except: [:index, :show]
   def index
-    @questions = Question.order(created_at: :desc).where("title like ?", "%#{params[:title]}%")
+    @questions = Question.order(created_at: :desc).where("title like :query OR body like :query", query: "%#{params[:title]}%")
   end
 
   def show
